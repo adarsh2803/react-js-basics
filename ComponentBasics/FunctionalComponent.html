@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://unpkg.com/react@17.0.2/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script type="text/babel">
+    //How to work in DOM - JS
+    // let ele = document.createElement('h1');
+    // ele.innerHTML = "HELLO bro";
+    // let root = document.getElementById("root")
+    // root.append(ele)
+
+    //How to do above thing with react => Functional components
+    //React is not a language , React use JSX( HTML + JS ) as language
+    //Browser cannot process JSX directly , so need to use babel tool (JSX to JS converter)
+    function Element({ name = "hallo", place: add = "kosi" }) {
+      //console.log(name, add);
+      return (
+        <div>
+          <h1>Hello Bro {name}</h1>
+          <h2>{add}</h2>
+        </div>
+      );
+    }
+
+    function Main() {
+      return (
+        //code written inside return is JSX
+        //name and place here are props , that you can send to other components
+        <React.Fragment>
+          <Element name="madlo" place="patna" />
+          <Element />
+        </React.Fragment>
+      );
+    }
+
+    ReactDOM.render(<Main />, document.getElementById("root"));
+
+    /*
+        Rules of JSX
+        1. No Function and variable declaration is allowed -> soln declare above return
+        2. No Loop allowed - soln map and filter
+        3. if else not allowed - soln ternary opt
+        4. object render not allowed - soln try to render array
+    */
+
+    /*
+        1. Types of Class Component
+        ----------------------------
+        Static UI :- Functional Component (using hooks , you can make states and Dynamic UI)
+
+        Dynamic UI :- Class Components (states)
+        1. State :- React object which have info/properties of component
+        2. Render:- when state is changed render is called , it displays UI
+
+        2. LifeCycle of a Class Component
+        ----------------------------------
+        Mounting : constuctor() -> render() -> componentDidMount()
+        Update : render()  ->  componentDidUpdate() : It is a cycle
+        UnMounting : componentDidUnmount()
+
+        In componentDidMount() , write sideEffect() jobs you want to run (API call)
+        time taking stuff , works on other thread
+
+        3. this.setState() is asynchronous function
+
+        4. export let arr = [1, 2, 3, 4]; //export kitne bhi kr sakte
+           export default Todo; //export default can be only 1 in one file
+
+
+    */
+  </script>
+</html>

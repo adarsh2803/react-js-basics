@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://unpkg.com/react@17.0.2/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
+    <title>Counter App</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script type="text/babel">
+    //Define class in this way and extends with Component (inherit Component class)
+
+    class Counter extends React.Component {
+      //Constructor
+      constructor() {
+        super(); //hume isse is class ka this milta hai
+        this.state = {
+          count: 0,
+          name: "hallo",
+          anil: 100,
+        };
+      }
+
+      //Functions
+      increment = () => {
+        this.setState({
+          count: this.state.count + 1,
+          name: "hallo madlo",
+          adarsh: this.state.anil + 1,
+        });
+      };
+
+      decrement = () => {
+        this.setState({
+          count: this.state.count - 1,
+          name: "hallo doramu",
+          priya: this.state.anil - 1,
+        });
+      };
+
+      //Render
+      render() {
+        console.log("Render");
+        return (
+          <React.Fragment>
+            <h1>{this.state.count}</h1>
+            <button onClick={this.increment}>+</button>
+            <button onClick={this.decrement}>-</button>
+            <h1>{this.state.name}</h1>
+            <h1>{this.state.adarsh}</h1>
+            <h1>{this.state.priya}</h1>
+          </React.Fragment>
+        );
+      }
+    }
+
+    ReactDOM.render(<Counter />, document.getElementById("root"));
+  </script>
+</html>
